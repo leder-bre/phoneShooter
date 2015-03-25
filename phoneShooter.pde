@@ -62,8 +62,6 @@ void setup() {
   background(255);
   stroke(0);
 
-  // Set game initial values
-  // (int) casts, or forces, non-integer results to become integers 
   y = 0 - diameter / 2;       // Target starts just off of top of screen
   ySpeed = random(1, 10);     // Speed varies
   diameter = random(25, 50);  // Diameter varies
