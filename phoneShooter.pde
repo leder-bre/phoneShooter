@@ -58,13 +58,13 @@ void setup() {
   blue=255;
   lives = 5;
   // Create a canvas with white background
-  size(600, 700);
+  size(1080, 1920);
   background(255);
   stroke(0);
 
   y = 0 - diameter / 2;       // Target starts just off of top of screen
   ySpeed = random(1, 10);     // Speed varies
-  diameter = random(25, 50);  // Diameter varies
+  diameter = random(50, 100);  // Diameter varies
   x = random(0+diameter/2, width-diameter/2);       // Horizontal position changes
   score = 0;                  // Score begins at zero
   fill(0);                    // Black fill for target
@@ -163,7 +163,7 @@ void draw() {
 
     if (timer > 1) {
       timer -= 1;
-      textSize(60);
+      textSize(120);
       fill(200, 200, 0, timer * 4);
       text("LEVEL UP", width/2, height/2);
     }
@@ -171,10 +171,10 @@ void draw() {
     if (sqrt(((x-mouseX)*(x-mouseX)) + ((y-mouseY) * (y-mouseY))) <= diameter/2 && mousePressed && canShoot <= 0) {
       y = 0 - diameter/2; 
       x = random(0+diameter/2, width-diameter/2);
-      score+=level + 10 + 3*ySpeed - int(diameter)/4;
-      exp+= level + 10 + 3*ySpeed - int(diameter)/4;
+      score+=level + 10 + 3*ySpeed - int(diameter)/8;
+      exp+= level + 10 + 3*ySpeed - int(diameter)/8;
       ySpeed = random(1, 5) + level/3;
-      diameter = random(25, 50) + 2*level;
+      diameter = random(50, 100) + 4*level;
       canShoot = 40 - level;
     }
 
@@ -211,7 +211,7 @@ void draw() {
       reset = true;
       hit = 255;
       lives -= 1;
-      diameter = random(25, 50) + 2*level;
+      diameter = random(50, 100) + 4*level;
       if (lives == 0) {
         lose = true;
       }
@@ -228,17 +228,17 @@ void draw() {
 
     for (int w = 1; w <= lives; w++) {
       fill(255, 0, 0);
-      ellipse(width - 20 * w, height - 20, 10, 10);
+      ellipse(width - 40 * w, height - 40, 20, 20);
     }
 
 
 
     fill(0);
     textAlign(CENTER);
-    textSize(20);
-    text("Score: " + int(score), width/2, 20);
-    text("Exp: " + e + "/" + l, width/2, 90);
-    text("Level: " + level, width/2, 40);
+    textSize(40);
+    text("Score: " + int(score), width/2, 40);
+    text("Exp: " + e + "/" + l, width/2, 100);
+    text("Level: " + level, width/2, 140);
 
     fill(150, 150, 150);
 
@@ -254,8 +254,8 @@ void draw() {
 
     fill(150, 150, 0);
     noStroke();
-    rect(10, height-30, 120-3*canShoot*(60/(60-level/2)), 20); 
-    rect(mouseX-canShoot/2, mouseY+20, canShoot, 5);
+    rect(10, height-50, 120-3*canShoot*(60/(60-level/2)), 40); 
+    rect(mouseX-canShoot/2, mouseY+20, canShoot*(60/(60-level/2)), 5);
 
     stroke(200, 200, 150);
     noFill();
@@ -292,10 +292,10 @@ void draw() {
        }
        */
 
-      textSize(40);
+      textSize(80);
       fill(0);
       text("You Lose", width/2, height/2);
-      textSize(20);
+      textSize(40);
       stroke(200, 200, 150);
       fill(255);
       rect(width/2 - 40, height/2 +10, 80, 28);
