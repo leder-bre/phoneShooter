@@ -63,8 +63,8 @@ void setup() {
   stroke(0);
 
   y = 0 - diameter / 2;       // Target starts just off of top of screen
-  ySpeed = random(1, 10);     // Speed varies
-  diameter = random(50, 100);  // Diameter varies
+  ySpeed = random(2, 20);     // Speed varies
+  diameter = random(75, 150);  // Diameter varies
   x = random(0+diameter/2, width-diameter/2);       // Horizontal position changes
   score = 0;                  // Score begins at zero
   fill(0);                    // Black fill for target
@@ -171,10 +171,10 @@ void draw() {
     if (sqrt(((x-mouseX)*(x-mouseX)) + ((y-mouseY) * (y-mouseY))) <= diameter/2 && mousePressed && canShoot <= 0) {
       y = 0 - diameter/2; 
       x = random(0+diameter/2, width-diameter/2);
-      score+=level + 10 + 3*ySpeed - int(diameter)/8;
-      exp+= level + 10 + 3*ySpeed - int(diameter)/8;
-      ySpeed = random(1, 5) + level/3;
-      diameter = random(50, 100) + 4*level;
+      score+=level + 10 + 2*ySpeed - int(diameter)/8;
+      exp+= level + 10 + 2*ySpeed - int(diameter)/8;
+      ySpeed = random(2, 10) + level/2;
+      diameter = random(75, 150) + 4*level;
       canShoot = 40 - level;
     }
 
@@ -207,11 +207,11 @@ void draw() {
     if (y > height) {
       y = 0 - diameter; 
       x = random(0+diameter/2, width-diameter/2);
-      ySpeed = random(1, 5) + level/3;
+      ySpeed = random(2, 10) + level/2;
       reset = true;
       hit = 255;
       lives -= 1;
-      diameter = random(50, 100) + 4*level;
+      diameter = random(75, 150) + 4*level;
       if (lives == 0) {
         lose = true;
       }
@@ -228,7 +228,7 @@ void draw() {
 
     for (int w = 1; w <= lives; w++) {
       fill(255, 0, 0);
-      ellipse(width - 40 * w, height - 40, 20, 20);
+      ellipse(width - (40 * w), 1880, 40, 40);
     }
 
 
@@ -254,7 +254,7 @@ void draw() {
 
     fill(150, 150, 0);
     noStroke();
-    rect(10, height-50, 120-3*canShoot*(60/(60-level/2)), 40); 
+    rect(10, 1860, 120-3*canShoot*(60/(60-level/2)), 50); 
     rect(mouseX-canShoot/2, mouseY+20, canShoot*(60/(60-level/2)), 5);
 
     stroke(200, 200, 150);
